@@ -13,8 +13,7 @@ protected:
   //virtual void finishSending(){}
 
   virtual uint8_t startReceive(uint8_t length){return length;};
-  virtual uint8_t receiveByte(){return 0x00;}
-  virtual uint8_t receiveByte(bool stop){return 0x00;}
+  virtual uint8_t receiveByte(bool stop=false){return 0x00;}
   //virtual void finishReceiving(){}
 
   uint8_t executeCommand(uint8_t cmd,uint8_t requestLength, uint8_t *request, uint8_t *responseLength, uint8_t *response);
@@ -28,20 +27,13 @@ public:
   uint64_t getUnixtime();
   uint8_t echoback(uint8_t length, uint8_t *data, uint8_t *response);
   uint16_t getADC(uint8_t channel);
-  uint8_t enqueueTx(uint8_t ch, int32_t value, uint64_t offset);
-  uint8_t enqueueTx(uint8_t ch, uint32_t value, uint64_t offset);
-  uint8_t enqueueTx(uint8_t ch, int64_t value, uint64_t offset);
-  uint8_t enqueueTx(uint8_t ch, uint64_t value, uint64_t offset);
-  uint8_t enqueueTx(uint8_t ch, float value, uint64_t offset);
-  uint8_t enqueueTx(uint8_t ch, double value, uint64_t offset);
-  uint8_t enqueueTx(uint8_t ch, uint8_t value[8], uint64_t offset);
-  uint8_t enqueueTx(uint8_t ch, int32_t value);
-  uint8_t enqueueTx(uint8_t ch, uint32_t value);
-  uint8_t enqueueTx(uint8_t ch, int64_t value);
-  uint8_t enqueueTx(uint8_t ch, uint64_t value);
-  uint8_t enqueueTx(uint8_t ch, float value);
-  uint8_t enqueueTx(uint8_t ch, double value);
-  uint8_t enqueueTx(uint8_t ch, uint8_t value[8]);
+  uint8_t enqueueTx(uint8_t ch, int32_t value, uint64_t offset=0);
+  uint8_t enqueueTx(uint8_t ch, uint32_t value, uint64_t offset=0);
+  uint8_t enqueueTx(uint8_t ch, int64_t value, uint64_t offset=0);
+  uint8_t enqueueTx(uint8_t ch, uint64_t value, uint64_t offset=0);
+  uint8_t enqueueTx(uint8_t ch, float value, uint64_t offset=0);
+  uint8_t enqueueTx(uint8_t ch, double value, uint64_t offset=0);
+  uint8_t enqueueTx(uint8_t ch, uint8_t value[8], uint64_t offset=0);
   uint8_t getTxQueueLength(uint8_t *available, uint8_t *queued);
   uint8_t clearTx();
   uint8_t getTxStatus(uint8_t *queue, uint8_t *immediate);
@@ -71,8 +63,7 @@ protected:
   void begin();
   void end();
   void sendByte(uint8_t data);
-  uint8_t receiveByte(bool stop);
-  uint8_t receiveByte();
+  uint8_t receiveByte(bool stop=false);
 public:
   SakuraIO_SPI(int _cs);
 };
@@ -84,8 +75,7 @@ protected:
   void end();
   void sendByte(uint8_t data);
   uint8_t startReceive(uint8_t length);
-  uint8_t receiveByte(bool stop);
-  uint8_t receiveByte();
+  uint8_t receiveByte(bool stop=false);
   uint8_t mode;
 public:
   SakuraIO_I2C();

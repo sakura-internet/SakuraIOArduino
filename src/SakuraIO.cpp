@@ -171,34 +171,6 @@ uint8_t SakuraIO::enqueueTx(uint8_t ch, uint8_t value[8], uint64_t offset){
   return enqueueTxRaw(ch, 'b', 8, (uint8_t *)value, offset);
 }
 
-uint8_t SakuraIO::enqueueTx(uint8_t ch, int32_t value){
-  return enqueueTx(ch, value, (uint32_t)0);
-}
-
-uint8_t SakuraIO::enqueueTx(uint8_t ch, uint32_t value){
-  return enqueueTx(ch, value, (uint32_t)0);
-}
-
-uint8_t SakuraIO::enqueueTx(uint8_t ch, int64_t value){
-  return enqueueTx(ch, value, (uint32_t)0);
-}
-
-uint8_t SakuraIO::enqueueTx(uint8_t ch, uint64_t value){
-  return enqueueTx(ch, value, (uint32_t)0);
-}
-
-uint8_t SakuraIO::enqueueTx(uint8_t ch, float value){
-  return enqueueTx(ch, value, (uint32_t)0);
-}
-
-uint8_t SakuraIO::enqueueTx(uint8_t ch, double value){
-  return enqueueTx(ch, value, (uint32_t)0);
-}
-
-uint8_t SakuraIO::enqueueTx(uint8_t ch, uint8_t value[8]){
-  return enqueueTx(ch, value, (uint32_t)0);
-}
-
 uint8_t SakuraIO::getTxQueueLength(uint8_t *available, uint8_t *queued){
   uint8_t response[2] = {0x00};
   uint8_t responseLength = 2;

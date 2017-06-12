@@ -48,10 +48,6 @@ uint8_t SakuraIO_I2C::startReceive(uint8_t length){
   mode = MODE_READ;
 }
 
-uint8_t SakuraIO_I2C::receiveByte(){
-  return receiveByte(false);
-}
-
 uint8_t SakuraIO_I2C::receiveByte(bool stop){
   uint8_t ret = 0;
   if( Wire.available() ) ret = Wire.read();
