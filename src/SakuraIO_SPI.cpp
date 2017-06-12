@@ -32,10 +32,6 @@ void SakuraIO_SPI::sendByte(uint8_t data){
 
 
 uint8_t SakuraIO_SPI::receiveByte(bool stop){
-  return receiveByte();
-}
-
-uint8_t SakuraIO_SPI::receiveByte(){
   uint8_t ret;
   delayMicroseconds(20);
   ret = SPI.transfer(0x00);

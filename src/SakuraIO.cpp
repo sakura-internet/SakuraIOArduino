@@ -171,32 +171,15 @@ uint8_t SakuraIO::enqueueTx(uint8_t ch, uint8_t value[8], uint64_t offset){
   return enqueueTxRaw(ch, 'b', 8, (uint8_t *)value, offset);
 }
 
-uint8_t SakuraIO::enqueueTx(uint8_t ch, int32_t value){
-  return enqueueTx(ch, value, (uint32_t)0);
-}
-
-uint8_t SakuraIO::enqueueTx(uint8_t ch, uint32_t value){
-  return enqueueTx(ch, value, (uint32_t)0);
-}
-
-uint8_t SakuraIO::enqueueTx(uint8_t ch, int64_t value){
-  return enqueueTx(ch, value, (uint32_t)0);
-}
-
-uint8_t SakuraIO::enqueueTx(uint8_t ch, uint64_t value){
-  return enqueueTx(ch, value, (uint32_t)0);
-}
-
-uint8_t SakuraIO::enqueueTx(uint8_t ch, float value){
-  return enqueueTx(ch, value, (uint32_t)0);
-}
-
-uint8_t SakuraIO::enqueueTx(uint8_t ch, double value){
-  return enqueueTx(ch, value, (uint32_t)0);
-}
-
-uint8_t SakuraIO::enqueueTx(uint8_t ch, uint8_t value[8]){
-  return enqueueTx(ch, value, (uint32_t)0);
+uint8_t SakuraIO::enqueueTx(uint8_t length, ChData *data, uint64_t offset){
+  uint8_t requestLength = 10*length;
+  if( offset )
+  	requestLength += 8;
+  uint8_t request[requestLength];
+  memcpy(request, data, 10*length);
+  if( offset )
+  	  memcpy(request+10*length, &offset, 8);
+  return executeCommand(CMD_TX_ENQUEUE, requestLength, request, NULL, NULL);
 }
 
 uint8_t SakuraIO::getTxQueueLength(uint8_t *available, uint8_t *queued){
