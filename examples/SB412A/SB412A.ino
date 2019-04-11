@@ -12,7 +12,7 @@ void setup()
   Serial.print("Waiting to come online");
   Serial.begin(9600);
   for (;;) {
-    if ( (sakuraio.getConnectionStatus() & 0x80) == 0x80 ) break;
+    if ( (sakuraio.getConnectionStatus() & SAKURAIO_CONNECTION_STATUS_MASK) != 0x00 ) break;
     Serial.print(".");
     delay(100);
   }

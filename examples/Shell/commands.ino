@@ -26,7 +26,7 @@ void cmd_serial(int argc, char **argv){
 void cmd_status(int argc, char **argv){
   uint8_t ret = sakuraio.getConnectionStatus();
 
-  if((ret & 0x80) == 0x80){
+  if((ret & SAKURAIO_CONNECTION_STATUS_MASK) != 0x00){
     Serial.println("Online");
   }else{
     Serial.println("Offline");

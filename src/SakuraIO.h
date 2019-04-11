@@ -3,6 +3,8 @@
 
 #include <SakuraIO/commands.h>
 
+#define SAKURAIO_CONNECTION_STATUS_MASK (0x80)
+
 class SakuraIO
 {
 protected:

@@ -2,7 +2,7 @@
 // This code based on arduino playground and URL below (http://cranberrytree.blogspot.jp/2014/06/gy-521mpu-6050.html)
 /**
  * Channel definitions in Sakura IoT Platform
- * 
+ *
  * Channel 0: Temperature in celsius
  * Channel 1: Accelerometer X (G)
  * Channel 2: Accelerometer Y
@@ -86,7 +86,7 @@ void setup() {
 
     Serial.print("Waiting to come online");
     for (;;) {
-        if ((sakuraio.getConnectionStatus() & 0x80) == 0x80) {
+        if ((sakuraio.getConnectionStatus() & SAKURAIO_CONNECTION_STATUS_MASK) != 0x00) {
             Serial.println(" connected");
             break;
         }

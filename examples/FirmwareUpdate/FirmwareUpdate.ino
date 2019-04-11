@@ -44,7 +44,7 @@ uint8_t updateFirmware(){
     Serial.print('.');
     Serial.flush();
     delay(2000);
-    if((sakuraio.getConnectionStatus() & 0x80) != 0x00){
+    if((sakuraio.getConnectionStatus() & SAKURAIO_CONNECTION_STATUS_MASK) != 0x00){
       break;
     }
   }
